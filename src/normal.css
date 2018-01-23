@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+html{background-image: url(fondo.jpg); background-repeat: repeat;}
+article{text-align: center;}
+header{color: darkgoldenrod; font-family: "Comic Sans MS";font-size: large;text-align: center}
+article{color: darkgoldenrod; font-family: "Comic Sans MS";text-align: center}
+nav{color:#000000; font-family: "Comic Sans MS";font-size: 80%;background-color: goldenrod}
+table{color:#000000; font-family: "Comic Sans MS";text-align: center;background-color: goldenrod}
+footer{color: #000000;font-family: "Comic Sans MS";font-size: small;}

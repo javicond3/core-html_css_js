@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+html{background-image: url(fondo.jpg); background-repeat: repeat;}
+article{text-align: center;}
+header{display:none;}
+nav{color:#000000; font-family: "Comic Sans MS";font-size: 80%;background-color: goldenrod}
+footer{display: none;}
