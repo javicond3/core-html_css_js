@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <script type = "text/javascript"
+  src="https://code.jquery.com/jquery-2.2.4.min.js">
+    </script>
+    <script type="text/javascript">
+      $(function(){
+        var resultado = 0;
+        var op = "+";
+        $("#pantalla").on("click", function(){
+          $("#pantalla").val("");
+        })
+        $("#suma").on("click", function(){
+          
+          if (op === "+")
+            resultado = +$("#pantalla").val() + +resultado;
+          if (op === "-")
+            resultado = +resultado - +$("#pantalla").val();  //Asi sino no sale
+          op = "+";
+
+        })
+        $("#resta").on("click", function(){
+          if (op === "+")
+            resultado = +$("#pantalla").val() + +resultado;
+          if (op === "-")
+            resultado = +resultado - +$("#pantalla").val();  //Asi sino no sale
+          op = "-";
+
+        })
+        $("#cuadrado").on("click", function(){
+          resultado = $("#pantalla");
+          resultado.val(resultado.val() * resultado.val());
+          comprueba();
+        })
+        $("#inverso").on("click", function(){
+          resultado = $("#pantalla");
+          resultado.val(1/resultado.val());
+          comprueba();
+
+        })
+        $("#raiz").on("click", function(){
+          resultado = $("#pantalla");
+          resultado.val(Math.sqrt(resultado.val()));
+          comprueba();
+        })
+
+        $("#pentera").on("click", function(){
+          resultado = $("#pantalla");
+          resultado.val(Math.round(resultado.val()));
+          comprueba();
+        })
+        $("#potencia2").on("click", function(){
+          resultado = $("#pantalla");
+          resultado.val(Math.pow(2,resultado.val()));
+          comprueba();
+        })
+        $("#factorial").on("click", function(){
+          resultado= $("#pantalla");
+          var fact = +resultado.val();
+          if (fact < 0 || (fact%1) !== 0)
+            resultado.val("NaN");
+          else if (fact === 0 || fact === 1) 
+            resultado.val(1);
+          else{
+              var intermedio = fact;
+             while(intermedio !== 1){
+              fact *= --intermedio;
+            }
+            resultado.val(fact);
+            
+          }
+          comprueba();
+           
+        })
+        $("#igual").on("click", function(){
+          if (op === "+")
+            resultado = +$("#pantalla").val() + +resultado;
+          if (op === "-")
+            resultado = +resultado - +$("#pantalla").val();  //Asi sino no sale
+          $("#pantalla").val(resultado);
+          resultado = 0;   //Porque sino si vuelvo a dar a = se duplica el valor tal y como he escrito el código.
+          comprueba();
+        })
+        $("#limpiar").on("click", function(){
+          $("#pantalla").val("");
+          op ="+";
+          resultado=0;
+        })
+      });
+
+      function comprueba(){
+        if($("#pantalla").val() === "NaN" || $("#pantalla").val() === "Infinity" || $("#pantalla").val() === "-Infinity" )
+          $("#pantalla").val("Error");
+      }
+    </script>
+  <title>CORE2016 P3</title>
+</head>
+<body>
+  <header>
+    Buenos días, bienvenido a la calculadora de Javier Conde y Jesús Ventas <a href="mailto:javier.conde.diaz@alumnos.upm.es">javier.conde.diaz@alumnos.upm.es</a> <a href="mailto:j.ventas@alumnos.upm.es">j.ventas@alumnos.upm.es</a>
+  </header>
+  <section id="main">
+    Número:
+    <input type="text" name="pantalla" id="pantalla"><br>
+    <button id="suma">+</button>
+    <button id="resta">-</button>
+    <button id="cuadrado">x <sup>2</sup></button>
+    <button id="inverso">1/x</button>
+    <button id="raiz">sqrt(x)</button>
+    <button id="pentera">parte_entera(x)</button>
+    <button id="potencia2">2 <sup>x</sup></button>
+    <button id="factorial">x!</button>
+    <button id="igual">=</button>
+    <button id="limpiar">Limpiar</button>
+  
+  </section>
+
+</body>
+</html>
