@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CORE2016 P2</title>
+    <link rel="stylesheet" href="normal.css" type="text/css" media="(min-device-width:481px)">
+    <link rel="stylesheet" href="movil.css" type="text/css" media="(max-device-width:480px)">
+    <script>
+        function cabecera(objeto){
+            return "objeto solicitado: " + objeto;
+        }
+    </script>
+</head>
+<body>
+    <header id="cabecera"></header>
+    <main id="main">
+        <table border="1" id="tabla">
+            <tr>
+                <th>Nombre de la propiedad</th><th>Valor</th>
+            </tr>
+        </table>
+    </main>
+    <footer>
+        <p>Javier Conde Díaz: <a href="mailto:javier.conde.diaz@alumnos.upm.es">
+            javier.conde.diaz@alumnos.upm.es</a></p>
+        <p>Jesús Ventas Muñoz de Lucas: <a href="mailto:j.ventas@alumnos.upm.es">
+            j.ventas@alumnos.upm.es</a></p>
+    </footer>
+
+    <script>
+        var objeto = prompt("Introduzca objeto");
+        document.getElementById("cabecera").innerHTML = cabecera(objeto);
+        if(objeto.substring(0,5) === "this."){       //para arreglar lo de this
+            objeto = objeto.substring(5,objeto.length);
+        }
+        objeto = window[objeto];
+        for(var i in objeto){
+            var valor;
+            if(objeto[i] instanceof Object){
+                valor = "No imprimible(tipo object)";
+            } else if(typeof(objeto[i])==="function"){
+                valor = "No imprimible(tipo function)"
+            } else {
+                valor = objeto[i];
+            }
+            var tabla = document.getElementById("tabla");
+            tabla.innerHTML += "<tr><td>" + i + "</td><td>" + valor + "</td></tr>";
+        }
+    </script>
+</body>
+</html>

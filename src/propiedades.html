@@ -1,0 +1,56 @@
+!DOCTYPE html>
+<html>
+<head>
+	<div id = "solicitado"></div>
+	<title>
+		CORE2016 P2
+	</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="normal.css" type="text/css" media="(min-device-width:481px)">
+    <link rel="stylesheet" href="movil.css" type="text/css" media="(max-device-width:480px)">
+</head>
+<body>
+	<div id="main">
+
+		<table border="" id = "tabla">
+			
+		</table>
+
+
+
+		
+	</div>
+
+
+	<footer>
+		<p>Javier Conde Díaz: <a href="mailto:javier.conde.diaz@alumnos.upm.es">
+		javier.conde.diaz@alumnos.upm.es</a></p>
+		<p>Jesús Ventas Muñoz de Lucas: <a href="mailto:j.ventas@alumnos.upm.es">
+		j.ventas@alumnos.upm.es</a></p>
+	</footer>
+
+	<script type="text/javascript">
+		var obj = { a : prompt("Introduzca objeto")};
+		document.getElementById("solicitado").innerHTML = "Objeto solicitado: " + obj.a;
+		if(obj.a.substring(0,5) === "this."){		//para arreglar lo de this
+			obj.a = obj.a.substring(5,obj.a.length);
+		}
+		obj = window[obj.a]; //existe el parametro window["window"] así como window["document"]. Forma de acceder a parámetros
+		var tbl ="<tr> <td> Nombre de la propiedad </td> <td>Valor</td> </tr>";
+		for( var i in obj){
+			var atr="";
+			if ((typeof obj[i] === "object")  || ( typeof obj[i] === "function") ){
+				atr = "No imprimible";
+			}
+				
+			else{
+				atr =obj[i];
+			}
+			 tbl = tbl + "<tr> <td>"  + i + "</td> <td>"  + atr + "</td> </tr>";
+			document.getElementById("tabla").innerHTML = tbl;	//otra forma en propiedadesd (Como lo hizo jesus). Tiene que estar dentro del for sino no va	
+
+		}	
+
+	</script>
+</body>
+</html>
